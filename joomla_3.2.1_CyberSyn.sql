@@ -1,18 +1,26 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.6
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-02-2014 a las 22:39:40
--- Versión del servidor: 5.5.33
--- Versión de PHP: 5.5.3
+-- Tiempo de generación: 12-02-2014 a las 03:18:38
+-- Versión del servidor: 5.6.12-log
+-- Versión de PHP: 5.4.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
 --
--- Base de datos: `joomla_3.2.1_CyberSyn`
+-- Base de datos: `joomla_3.2.1_cybersyn`
 --
+CREATE DATABASE IF NOT EXISTS `joomla_3.2.1_cybersyn` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `joomla_3.2.1_cybersyn`;
 
 -- --------------------------------------------------------
 
@@ -20,7 +28,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `r0dnb_assets`
 --
 
-CREATE TABLE `r0dnb_assets` (
+CREATE TABLE IF NOT EXISTS `r0dnb_assets` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set parent.',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
@@ -146,7 +154,7 @@ INSERT INTO `r0dnb_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `t
 -- Estructura de tabla para la tabla `r0dnb_associations`
 --
 
-CREATE TABLE `r0dnb_associations` (
+CREATE TABLE IF NOT EXISTS `r0dnb_associations` (
   `id` int(11) NOT NULL COMMENT 'A reference to the associated item.',
   `context` varchar(50) NOT NULL COMMENT 'The context of the associated item.',
   `key` char(32) NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.',
@@ -194,7 +202,7 @@ INSERT INTO `r0dnb_associations` (`id`, `context`, `key`) VALUES
 -- Estructura de tabla para la tabla `r0dnb_banners`
 --
 
-CREATE TABLE `r0dnb_banners` (
+CREATE TABLE IF NOT EXISTS `r0dnb_banners` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cid` int(11) NOT NULL DEFAULT '0',
   `type` int(11) NOT NULL DEFAULT '0',
@@ -243,7 +251,7 @@ CREATE TABLE `r0dnb_banners` (
 -- Estructura de tabla para la tabla `r0dnb_banner_clients`
 --
 
-CREATE TABLE `r0dnb_banner_clients` (
+CREATE TABLE IF NOT EXISTS `r0dnb_banner_clients` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `contact` varchar(255) NOT NULL DEFAULT '',
@@ -269,7 +277,7 @@ CREATE TABLE `r0dnb_banner_clients` (
 -- Estructura de tabla para la tabla `r0dnb_banner_tracks`
 --
 
-CREATE TABLE `r0dnb_banner_tracks` (
+CREATE TABLE IF NOT EXISTS `r0dnb_banner_tracks` (
   `track_date` datetime NOT NULL,
   `track_type` int(10) unsigned NOT NULL,
   `banner_id` int(10) unsigned NOT NULL,
@@ -286,7 +294,7 @@ CREATE TABLE `r0dnb_banner_tracks` (
 -- Estructura de tabla para la tabla `r0dnb_categories`
 --
 
-CREATE TABLE `r0dnb_categories` (
+CREATE TABLE IF NOT EXISTS `r0dnb_categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -345,7 +353,7 @@ INSERT INTO `r0dnb_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `le
 -- Estructura de tabla para la tabla `r0dnb_contact_details`
 --
 
-CREATE TABLE `r0dnb_contact_details` (
+CREATE TABLE IF NOT EXISTS `r0dnb_contact_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
@@ -406,7 +414,7 @@ CREATE TABLE `r0dnb_contact_details` (
 -- Estructura de tabla para la tabla `r0dnb_content`
 --
 
-CREATE TABLE `r0dnb_content` (
+CREATE TABLE IF NOT EXISTS `r0dnb_content` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `title` varchar(255) NOT NULL DEFAULT '',
@@ -453,7 +461,7 @@ CREATE TABLE `r0dnb_content` (
 --
 
 INSERT INTO `r0dnb_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
-(1, 58, 'Inicio', 'inicio', '<p><img src="images/cybersyn.jpg" alt="" align="left" hspace="15" />En 1971, durante el gobierno del presidente Salvador Allende, se comienza a desarrollar en Chile un innovador sistema cibernético de gestión y transferencia de información. El proyecto se llamó CYBERSYN, sinergia cibernética, o SYNCO, sistema de información y control.</p>\r\n<p>En las empresas del área de la propiedad social del Estado de Chile se implementaría un sistema de transferencia de información económica a "casi" tiempo real con el gobierno.</p>\r\n<p>Después de nacionalizar y anexar diversas empresas de propiedad social al Estado, el sistema económico del Gobierno de Allende se enfrentó a la necesidad de coordinar la información de las empresas existentes estatales y las recientemente nacionalizadas. Para lograrlo, se necesitó crear un sistema de transferencia de información dinámico y flexible.</p>\r\n<p>En 1970, Fernando Flores fue nombrado Director General Técnico de CORFO (Corporación para el Fomento de la Producción de Chile). Comenzó a ser el responsable de la gestión y coordinación entre las empresas nacionalizadas y el Estado. Conocía las teorías y las soluciones propuestas por el británico Stafford Beer desde que era estudiante de ingeniería y posteriormente por su relación profesional con la empresa de consultoría de Stafford Beer SIGMA.</p>', '', 1, 2, '2014-01-22 21:13:32', 880, '', '2014-01-31 18:59:16', 880, 0, '0000-00-00 00:00:00', '2014-01-22 21:13:32', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 2, 21, '', '', 1, 215, '{"robots":"","author":"","rights":"","xreference":""}', 0, 'es-ES', ''),
+(1, 58, 'Inicio', 'inicio', '<p style="text-align: justify;"><img src="images/cybersyn.jpg" alt="" align="left" hspace="15" />En 1971, durante el gobierno del presidente Salvador Allende, se comienza a desarrollar en Chile un innovador sistema cibernético de gestión y transferencia de información. El proyecto se llamó CYBERSYN, sinergia cibernética, o SYNCO, sistema de información y control.</p>\r\n<p style="text-align: justify;">En las empresas del área de la propiedad social del Estado de Chile se implementaría un sistema de transferencia de información económica a "casi" tiempo real con el gobierno.</p>\r\n<p style="text-align: justify;">Después de nacionalizar y anexar diversas empresas de propiedad social al Estado, el sistema económico del Gobierno de Allende se enfrentó a la necesidad de coordinar la información de las empresas existentes estatales y las recientemente nacionalizadas. Para lograrlo, se necesitó crear un sistema de transferencia de información dinámico y flexible.</p>\r\n<p style="text-align: justify;">En 1970, Fernando Flores fue nombrado Director General Técnico de CORFO (Corporación para el Fomento de la Producción de Chile). Comenzó a ser el responsable de la gestión y coordinación entre las empresas nacionalizadas y el Estado. Conocía las teorías y las soluciones propuestas por el británico Stafford Beer desde que era estudiante de ingeniería y posteriormente por su relación profesional con la empresa de consultoría de Stafford Beer SIGMA.</p>', '', 1, 2, '2014-01-22 21:13:32', 880, '', '2014-02-12 03:16:44', 880, 880, '2014-02-12 03:16:44', '2014-01-22 21:13:32', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 21, '', '', 1, 219, '{"robots":"","author":"","rights":"","xreference":""}', 0, 'es-ES', ''),
 (2, 59, 'Home', 'home', '<p><img src="images/cybersyn.jpg" alt="" align="left" hspace="15" />Project Cybersyn was a Chilean project from 1971–1973 (during the government of President Salvador Allende) aimed at constructing a distributed decision support system to aid in the management of the national economy. The project consisted of four modules: an economic simulator, custom software to check factory performance, an operations room, and a national network of telex machines that were linked to one mainframe computer.[2]</p>\r\n<p>Project Cybersyn was based on Viable system model theory and a neural network approach to organizational design, and featured innovative technology for its time: it included a network of telex machines (Cybernet) in state-run enterprises that would transmit and receive information with the government in Santiago. Information from the field would be fed into statistical modeling software (Cyberstride) that would monitor production indicators (such as raw material supplies or high rates of worker absenteeism) in real time, and alert the workers in the first case, and in unnormal situations also the central government, if those parameters fell outside acceptable ranges. The information would also be input into economic simulation software (CHECO, for CHilean ECOnomic simulator) that the government could use to forecast the possible outcome of economic decisions. Finally, a sophisticated operations room (Opsroom) would provide a space where managers could see relevant economic data, formulate responses to emergencies, and transmit advice and directives to enterprises and factories in alarm situations by using the telex network.</p>\r\n<p>The principal architect of the system was British operations research scientist Stafford Beer, and the system embodied his notions of organisational cybernetics in industrial management. One of its main objectives was to devolve decision-making power within industrial enterprises to their workforce in order to develop self-regulation of factories.</p>', '', 1, 2, '2014-01-22 21:14:13', 880, '', '2014-01-31 19:00:34', 880, 0, '0000-00-00 00:00:00', '2014-01-22 21:14:13', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 2, 20, '', '', 1, 117, '{"robots":"","author":"","rights":"","xreference":""}', 0, 'en-GB', ''),
 (3, 60, 'Servicios', 'servicios', '<p>Esta es la pagina de servicios</p>', '', 1, 2, '2014-01-22 21:32:45', 880, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2014-01-22 21:32:45', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 19, '', '', 1, 10, '{"robots":"","author":"","rights":"","xreference":""}', 0, 'es-ES', ''),
 (4, 61, 'Services', 'services', '<p>This is the services page</p>', '', 1, 2, '2014-01-22 21:33:24', 880, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2014-01-22 21:33:24', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":false,"urlatext":"","targeta":"","urlb":false,"urlbtext":"","targetb":"","urlc":false,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 18, '', '', 1, 7, '{"robots":"","author":"","rights":"","xreference":""}', 0, 'en-GB', ''),
@@ -486,7 +494,7 @@ INSERT INTO `r0dnb_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `f
 -- Estructura de tabla para la tabla `r0dnb_contentitem_tag_map`
 --
 
-CREATE TABLE `r0dnb_contentitem_tag_map` (
+CREATE TABLE IF NOT EXISTS `r0dnb_contentitem_tag_map` (
   `type_alias` varchar(255) NOT NULL DEFAULT '',
   `core_content_id` int(10) unsigned NOT NULL COMMENT 'PK from the core content table',
   `content_item_id` int(11) NOT NULL COMMENT 'PK from the content type table',
@@ -507,7 +515,7 @@ CREATE TABLE `r0dnb_contentitem_tag_map` (
 -- Estructura de tabla para la tabla `r0dnb_content_frontpage`
 --
 
-CREATE TABLE `r0dnb_content_frontpage` (
+CREATE TABLE IF NOT EXISTS `r0dnb_content_frontpage` (
   `content_id` int(11) NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`content_id`)
@@ -519,7 +527,7 @@ CREATE TABLE `r0dnb_content_frontpage` (
 -- Estructura de tabla para la tabla `r0dnb_content_rating`
 --
 
-CREATE TABLE `r0dnb_content_rating` (
+CREATE TABLE IF NOT EXISTS `r0dnb_content_rating` (
   `content_id` int(11) NOT NULL DEFAULT '0',
   `rating_sum` int(10) unsigned NOT NULL DEFAULT '0',
   `rating_count` int(10) unsigned NOT NULL DEFAULT '0',
@@ -533,7 +541,7 @@ CREATE TABLE `r0dnb_content_rating` (
 -- Estructura de tabla para la tabla `r0dnb_content_types`
 --
 
-CREATE TABLE `r0dnb_content_types` (
+CREATE TABLE IF NOT EXISTS `r0dnb_content_types` (
   `type_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type_title` varchar(255) NOT NULL DEFAULT '',
   `type_alias` varchar(255) NOT NULL DEFAULT '',
@@ -573,7 +581,7 @@ INSERT INTO `r0dnb_content_types` (`type_id`, `type_title`, `type_alias`, `table
 -- Estructura de tabla para la tabla `r0dnb_core_log_searches`
 --
 
-CREATE TABLE `r0dnb_core_log_searches` (
+CREATE TABLE IF NOT EXISTS `r0dnb_core_log_searches` (
   `search_term` varchar(128) NOT NULL DEFAULT '',
   `hits` int(10) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -584,7 +592,7 @@ CREATE TABLE `r0dnb_core_log_searches` (
 -- Estructura de tabla para la tabla `r0dnb_extensions`
 --
 
-CREATE TABLE `r0dnb_extensions` (
+CREATE TABLE IF NOT EXISTS `r0dnb_extensions` (
   `extension_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `type` varchar(20) NOT NULL,
@@ -762,7 +770,7 @@ INSERT INTO `r0dnb_extensions` (`extension_id`, `name`, `type`, `element`, `fold
 -- Estructura de tabla para la tabla `r0dnb_finder_filters`
 --
 
-CREATE TABLE `r0dnb_finder_filters` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_filters` (
   `filter_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
@@ -786,7 +794,7 @@ CREATE TABLE `r0dnb_finder_filters` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links`
 --
 
-CREATE TABLE `r0dnb_finder_links` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links` (
   `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `url` varchar(255) NOT NULL,
   `route` varchar(255) NOT NULL,
@@ -821,7 +829,7 @@ CREATE TABLE `r0dnb_finder_links` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_terms0`
 --
 
-CREATE TABLE `r0dnb_finder_links_terms0` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_terms0` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -836,7 +844,7 @@ CREATE TABLE `r0dnb_finder_links_terms0` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_terms1`
 --
 
-CREATE TABLE `r0dnb_finder_links_terms1` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_terms1` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -851,7 +859,7 @@ CREATE TABLE `r0dnb_finder_links_terms1` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_terms2`
 --
 
-CREATE TABLE `r0dnb_finder_links_terms2` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_terms2` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -866,7 +874,7 @@ CREATE TABLE `r0dnb_finder_links_terms2` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_terms3`
 --
 
-CREATE TABLE `r0dnb_finder_links_terms3` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_terms3` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -881,7 +889,7 @@ CREATE TABLE `r0dnb_finder_links_terms3` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_terms4`
 --
 
-CREATE TABLE `r0dnb_finder_links_terms4` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_terms4` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -896,7 +904,7 @@ CREATE TABLE `r0dnb_finder_links_terms4` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_terms5`
 --
 
-CREATE TABLE `r0dnb_finder_links_terms5` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_terms5` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -911,7 +919,7 @@ CREATE TABLE `r0dnb_finder_links_terms5` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_terms6`
 --
 
-CREATE TABLE `r0dnb_finder_links_terms6` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_terms6` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -926,7 +934,7 @@ CREATE TABLE `r0dnb_finder_links_terms6` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_terms7`
 --
 
-CREATE TABLE `r0dnb_finder_links_terms7` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_terms7` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -941,7 +949,7 @@ CREATE TABLE `r0dnb_finder_links_terms7` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_terms8`
 --
 
-CREATE TABLE `r0dnb_finder_links_terms8` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_terms8` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -956,7 +964,7 @@ CREATE TABLE `r0dnb_finder_links_terms8` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_terms9`
 --
 
-CREATE TABLE `r0dnb_finder_links_terms9` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_terms9` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -971,7 +979,7 @@ CREATE TABLE `r0dnb_finder_links_terms9` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_termsa`
 --
 
-CREATE TABLE `r0dnb_finder_links_termsa` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_termsa` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -986,7 +994,7 @@ CREATE TABLE `r0dnb_finder_links_termsa` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_termsb`
 --
 
-CREATE TABLE `r0dnb_finder_links_termsb` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_termsb` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1001,7 +1009,7 @@ CREATE TABLE `r0dnb_finder_links_termsb` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_termsc`
 --
 
-CREATE TABLE `r0dnb_finder_links_termsc` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_termsc` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1016,7 +1024,7 @@ CREATE TABLE `r0dnb_finder_links_termsc` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_termsd`
 --
 
-CREATE TABLE `r0dnb_finder_links_termsd` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_termsd` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1031,7 +1039,7 @@ CREATE TABLE `r0dnb_finder_links_termsd` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_termse`
 --
 
-CREATE TABLE `r0dnb_finder_links_termse` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_termse` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1046,7 +1054,7 @@ CREATE TABLE `r0dnb_finder_links_termse` (
 -- Estructura de tabla para la tabla `r0dnb_finder_links_termsf`
 --
 
-CREATE TABLE `r0dnb_finder_links_termsf` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_links_termsf` (
   `link_id` int(10) unsigned NOT NULL,
   `term_id` int(10) unsigned NOT NULL,
   `weight` float unsigned NOT NULL,
@@ -1061,7 +1069,7 @@ CREATE TABLE `r0dnb_finder_links_termsf` (
 -- Estructura de tabla para la tabla `r0dnb_finder_taxonomy`
 --
 
-CREATE TABLE `r0dnb_finder_taxonomy` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_taxonomy` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL,
@@ -1089,7 +1097,7 @@ INSERT INTO `r0dnb_finder_taxonomy` (`id`, `parent_id`, `title`, `state`, `acces
 -- Estructura de tabla para la tabla `r0dnb_finder_taxonomy_map`
 --
 
-CREATE TABLE `r0dnb_finder_taxonomy_map` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_taxonomy_map` (
   `link_id` int(10) unsigned NOT NULL,
   `node_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`link_id`,`node_id`),
@@ -1103,7 +1111,7 @@ CREATE TABLE `r0dnb_finder_taxonomy_map` (
 -- Estructura de tabla para la tabla `r0dnb_finder_terms`
 --
 
-CREATE TABLE `r0dnb_finder_terms` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_terms` (
   `term_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
@@ -1126,7 +1134,7 @@ CREATE TABLE `r0dnb_finder_terms` (
 -- Estructura de tabla para la tabla `r0dnb_finder_terms_common`
 --
 
-CREATE TABLE `r0dnb_finder_terms_common` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_terms_common` (
   `term` varchar(75) NOT NULL,
   `language` varchar(3) NOT NULL,
   KEY `idx_word_lang` (`term`,`language`),
@@ -1260,7 +1268,7 @@ INSERT INTO `r0dnb_finder_terms_common` (`term`, `language`) VALUES
 -- Estructura de tabla para la tabla `r0dnb_finder_tokens`
 --
 
-CREATE TABLE `r0dnb_finder_tokens` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_tokens` (
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
   `common` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -1278,7 +1286,7 @@ CREATE TABLE `r0dnb_finder_tokens` (
 -- Estructura de tabla para la tabla `r0dnb_finder_tokens_aggregate`
 --
 
-CREATE TABLE `r0dnb_finder_tokens_aggregate` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_tokens_aggregate` (
   `term_id` int(10) unsigned NOT NULL,
   `map_suffix` char(1) NOT NULL,
   `term` varchar(75) NOT NULL,
@@ -1300,7 +1308,7 @@ CREATE TABLE `r0dnb_finder_tokens_aggregate` (
 -- Estructura de tabla para la tabla `r0dnb_finder_types`
 --
 
-CREATE TABLE `r0dnb_finder_types` (
+CREATE TABLE IF NOT EXISTS `r0dnb_finder_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `mime` varchar(100) NOT NULL,
@@ -1314,7 +1322,7 @@ CREATE TABLE `r0dnb_finder_types` (
 -- Estructura de tabla para la tabla `r0dnb_languages`
 --
 
-CREATE TABLE `r0dnb_languages` (
+CREATE TABLE IF NOT EXISTS `r0dnb_languages` (
   `lang_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `lang_code` char(7) NOT NULL,
   `title` varchar(50) NOT NULL,
@@ -1350,7 +1358,7 @@ INSERT INTO `r0dnb_languages` (`lang_id`, `lang_code`, `title`, `title_native`, 
 -- Estructura de tabla para la tabla `r0dnb_menu`
 --
 
-CREATE TABLE `r0dnb_menu` (
+CREATE TABLE IF NOT EXISTS `r0dnb_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menutype` varchar(24) NOT NULL COMMENT 'The type of menu this item belongs to. FK to #__menu_types.menutype',
   `title` varchar(255) NOT NULL COMMENT 'The display title of the menu item.',
@@ -1445,7 +1453,7 @@ INSERT INTO `r0dnb_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `l
 -- Estructura de tabla para la tabla `r0dnb_menu_types`
 --
 
-CREATE TABLE `r0dnb_menu_types` (
+CREATE TABLE IF NOT EXISTS `r0dnb_menu_types` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `menutype` varchar(24) NOT NULL,
   `title` varchar(48) NOT NULL,
@@ -1469,7 +1477,7 @@ INSERT INTO `r0dnb_menu_types` (`id`, `menutype`, `title`, `description`) VALUES
 -- Estructura de tabla para la tabla `r0dnb_messages`
 --
 
-CREATE TABLE `r0dnb_messages` (
+CREATE TABLE IF NOT EXISTS `r0dnb_messages` (
   `message_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id_from` int(10) unsigned NOT NULL DEFAULT '0',
   `user_id_to` int(10) unsigned NOT NULL DEFAULT '0',
@@ -1489,7 +1497,7 @@ CREATE TABLE `r0dnb_messages` (
 -- Estructura de tabla para la tabla `r0dnb_messages_cfg`
 --
 
-CREATE TABLE `r0dnb_messages_cfg` (
+CREATE TABLE IF NOT EXISTS `r0dnb_messages_cfg` (
   `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `cfg_name` varchar(100) NOT NULL DEFAULT '',
   `cfg_value` varchar(255) NOT NULL DEFAULT '',
@@ -1502,7 +1510,7 @@ CREATE TABLE `r0dnb_messages_cfg` (
 -- Estructura de tabla para la tabla `r0dnb_modules`
 --
 
-CREATE TABLE `r0dnb_modules` (
+CREATE TABLE IF NOT EXISTS `r0dnb_modules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `title` varchar(100) NOT NULL DEFAULT '',
@@ -1572,7 +1580,7 @@ INSERT INTO `r0dnb_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orde
 -- Estructura de tabla para la tabla `r0dnb_modules_menu`
 --
 
-CREATE TABLE `r0dnb_modules_menu` (
+CREATE TABLE IF NOT EXISTS `r0dnb_modules_menu` (
   `moduleid` int(11) NOT NULL DEFAULT '0',
   `menuid` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`moduleid`,`menuid`)
@@ -1643,7 +1651,7 @@ INSERT INTO `r0dnb_modules_menu` (`moduleid`, `menuid`) VALUES
 -- Estructura de tabla para la tabla `r0dnb_newsfeeds`
 --
 
-CREATE TABLE `r0dnb_newsfeeds` (
+CREATE TABLE IF NOT EXISTS `r0dnb_newsfeeds` (
   `catid` int(11) NOT NULL DEFAULT '0',
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL DEFAULT '',
@@ -1690,7 +1698,7 @@ CREATE TABLE `r0dnb_newsfeeds` (
 -- Estructura de tabla para la tabla `r0dnb_overrider`
 --
 
-CREATE TABLE `r0dnb_overrider` (
+CREATE TABLE IF NOT EXISTS `r0dnb_overrider` (
   `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `constant` varchar(255) NOT NULL,
   `string` text NOT NULL,
@@ -1704,7 +1712,7 @@ CREATE TABLE `r0dnb_overrider` (
 -- Estructura de tabla para la tabla `r0dnb_postinstall_messages`
 --
 
-CREATE TABLE `r0dnb_postinstall_messages` (
+CREATE TABLE IF NOT EXISTS `r0dnb_postinstall_messages` (
   `postinstall_message_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `extension_id` bigint(20) NOT NULL DEFAULT '700' COMMENT 'FK to #__extensions',
   `title_key` varchar(255) NOT NULL DEFAULT '' COMMENT 'Lang key for the title',
@@ -1737,7 +1745,7 @@ INSERT INTO `r0dnb_postinstall_messages` (`postinstall_message_id`, `extension_i
 -- Estructura de tabla para la tabla `r0dnb_redirect_links`
 --
 
-CREATE TABLE `r0dnb_redirect_links` (
+CREATE TABLE IF NOT EXISTS `r0dnb_redirect_links` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `old_url` varchar(255) NOT NULL,
   `new_url` varchar(255) NOT NULL,
@@ -1758,7 +1766,7 @@ CREATE TABLE `r0dnb_redirect_links` (
 -- Estructura de tabla para la tabla `r0dnb_schemas`
 --
 
-CREATE TABLE `r0dnb_schemas` (
+CREATE TABLE IF NOT EXISTS `r0dnb_schemas` (
   `extension_id` int(11) NOT NULL,
   `version_id` varchar(20) NOT NULL,
   PRIMARY KEY (`extension_id`,`version_id`)
@@ -1777,7 +1785,7 @@ INSERT INTO `r0dnb_schemas` (`extension_id`, `version_id`) VALUES
 -- Estructura de tabla para la tabla `r0dnb_session`
 --
 
-CREATE TABLE `r0dnb_session` (
+CREATE TABLE IF NOT EXISTS `r0dnb_session` (
   `session_id` varchar(200) NOT NULL DEFAULT '',
   `client_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `guest` tinyint(4) unsigned DEFAULT '1',
@@ -1795,8 +1803,8 @@ CREATE TABLE `r0dnb_session` (
 --
 
 INSERT INTO `r0dnb_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('76515c2dd7da1e54cf6036adc8eb4849', 0, 1, '1391808853', '__default|a:7:{s:15:"session.counter";i:33;s:19:"session.timer.start";i:1391806677;s:18:"session.timer.last";i:1391808851;s:17:"session.timer.now";i:1391808853;s:22:"session.client.browser";s:119:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.77 Safari/537.36";s:8:"registry";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":24:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:1:{i:0;s:2:"13";}s:5:"guest";i:1;s:13:"lastResetTime";N;s:10:"resetCount";N;s:10:"\\0\\0\\0_params";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:1:{i:0;s:1:"1";}s:14:"\\0\\0\\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}}', 0, ''),
-('78852b00f6ce7ff52e56416ab627df5f', 1, 0, '1391809152', '__default|a:8:{s:15:"session.counter";i:68;s:19:"session.timer.start";i:1391806660;s:18:"session.timer.last";i:1391809141;s:17:"session.timer.now";i:1391809152;s:22:"session.client.browser";s:119:"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.77 Safari/537.36";s:8:"registry";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":3:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:0:"";}s:11:"com_modules";O:8:"stdClass":3:{s:7:"modules";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:18:"client_id_previous";i:0;}}s:4:"edit";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":2:{s:4:"data";N;s:2:"id";a:0:{}}}s:3:"add";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":2:{s:12:"extension_id";N;s:6:"params";N;}}}s:11:"com_content";O:8:"stdClass":1:{s:4:"edit";O:8:"stdClass":1:{s:7:"article";O:8:"stdClass":2:{s:2:"id";a:0:{}s:4:"data";N;}}}}}s:4:"user";O:5:"JUser":26:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"880";s:4:"name";s:10:"Super User";s:8:"username";s:9:"ritchie20";s:5:"email";s:24:"oscar.rubio.ma@gmail.com";s:8:"password";s:34:"$P$DdXL.lZpQXajt4lE7SJuk4vikTeWpI0";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2014-01-22 19:58:08";s:13:"lastvisitDate";s:19:"2014-01-31 11:44:34";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:10:"\\0\\0\\0_params";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"88d7174e3c8fa6894b48fd929b38fb1c";}', 880, 'ritchie20');
+('duo3tgdu0keb8dg4kn8l3jc467', 1, 0, '1392175008', '__default|a:8:{s:15:"session.counter";i:8;s:19:"session.timer.start";i:1392174871;s:18:"session.timer.last";i:1392175003;s:17:"session.timer.now";i:1392175005;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36";s:8:"registry";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":3:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:0:"";}s:13:"com_installer";O:8:"stdClass":2:{s:7:"message";s:0:"";s:17:"extension_message";s:0:"";}s:11:"com_content";O:8:"stdClass":1:{s:4:"edit";O:8:"stdClass":1:{s:7:"article";O:8:"stdClass":2:{s:2:"id";a:1:{i:0;i:1;}s:4:"data";N;}}}}}s:4:"user";O:5:"JUser":26:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"880";s:4:"name";s:10:"Super User";s:8:"username";s:9:"ritchie20";s:5:"email";s:24:"oscar.rubio.ma@gmail.com";s:8:"password";s:34:"$P$DdXL.lZpQXajt4lE7SJuk4vikTeWpI0";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2014-01-22 19:58:08";s:13:"lastvisitDate";s:19:"2014-02-07 20:57:49";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:10:"\\0\\0\\0_params";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"ff7d737a8923b0d75c098e36c1f6863f";}', 880, 'ritchie20'),
+('n06kqbfmee08qfbhv6gq3gkuc3', 0, 1, '1392175006', '__default|a:7:{s:15:"session.counter";i:5;s:19:"session.timer.start";i:1392174728;s:18:"session.timer.last";i:1392174949;s:17:"session.timer.now";i:1392175004;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.107 Safari/537.36";s:8:"registry";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":24:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:1:{i:0;s:2:"13";}s:5:"guest";i:1;s:13:"lastResetTime";N;s:10:"resetCount";N;s:10:"\\0\\0\\0_params";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:1:{i:0;s:1:"1";}s:14:"\\0\\0\\0_authLevels";a:2:{i:0;i:1;i:1;i:1;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}}', 0, '');
 
 -- --------------------------------------------------------
 
@@ -1804,7 +1812,7 @@ INSERT INTO `r0dnb_session` (`session_id`, `client_id`, `guest`, `time`, `data`,
 -- Estructura de tabla para la tabla `r0dnb_tags`
 --
 
-CREATE TABLE `r0dnb_tags` (
+CREATE TABLE IF NOT EXISTS `r0dnb_tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
   `lft` int(11) NOT NULL DEFAULT '0',
@@ -1858,7 +1866,7 @@ INSERT INTO `r0dnb_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `tit
 -- Estructura de tabla para la tabla `r0dnb_template_styles`
 --
 
-CREATE TABLE `r0dnb_template_styles` (
+CREATE TABLE IF NOT EXISTS `r0dnb_template_styles` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `template` varchar(50) NOT NULL DEFAULT '',
   `client_id` tinyint(1) unsigned NOT NULL DEFAULT '0',
@@ -1887,7 +1895,7 @@ INSERT INTO `r0dnb_template_styles` (`id`, `template`, `client_id`, `home`, `tit
 -- Estructura de tabla para la tabla `r0dnb_ucm_base`
 --
 
-CREATE TABLE `r0dnb_ucm_base` (
+CREATE TABLE IF NOT EXISTS `r0dnb_ucm_base` (
   `ucm_id` int(10) unsigned NOT NULL,
   `ucm_item_id` int(10) NOT NULL,
   `ucm_type_id` int(11) NOT NULL,
@@ -1904,7 +1912,7 @@ CREATE TABLE `r0dnb_ucm_base` (
 -- Estructura de tabla para la tabla `r0dnb_ucm_content`
 --
 
-CREATE TABLE `r0dnb_ucm_content` (
+CREATE TABLE IF NOT EXISTS `r0dnb_ucm_content` (
   `core_content_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `core_type_alias` varchar(255) NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
   `core_title` varchar(255) NOT NULL,
@@ -1958,7 +1966,7 @@ CREATE TABLE `r0dnb_ucm_content` (
 -- Estructura de tabla para la tabla `r0dnb_ucm_history`
 --
 
-CREATE TABLE `r0dnb_ucm_history` (
+CREATE TABLE IF NOT EXISTS `r0dnb_ucm_history` (
   `version_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ucm_item_id` int(10) unsigned NOT NULL,
   `ucm_type_id` int(10) unsigned NOT NULL,
@@ -1972,7 +1980,7 @@ CREATE TABLE `r0dnb_ucm_history` (
   PRIMARY KEY (`version_id`),
   KEY `idx_ucm_item_id` (`ucm_type_id`,`ucm_item_id`),
   KEY `idx_save_date` (`save_date`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=47 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=48 ;
 
 --
 -- Volcado de datos para la tabla `r0dnb_ucm_history`
@@ -2026,7 +2034,8 @@ INSERT INTO `r0dnb_ucm_history` (`version_id`, `ucm_item_id`, `ucm_type_id`, `ve
 INSERT INTO `r0dnb_ucm_history` (`version_id`, `ucm_item_id`, `ucm_type_id`, `version_note`, `save_date`, `editor_user_id`, `character_count`, `sha1_hash`, `version_data`, `keep_forever`) VALUES
 (44, 23, 1, '', '2014-02-07 21:08:08', 880, 3998, '1cf7423e010f5458c9a63871289cc603c783294b', '{"id":23,"asset_id":"92","title":"Lean & Pretotype","alias":"lean-pretotype","introtext":"<p style=\\"margin: 0px 0px 30px; color: #231f20; font-size: 15px; line-height: 24px; font-family: Tahoma, Geneva, Verdana, sans-serif; text-align: left;\\"><img src=\\"images\\/methodology_diagram.jpg\\" alt=\\"\\" align=\\"left\\" hspace=\\"15\\" \\/>Too many startups begin with an idea for a product that they think people want. They then spend months, sometimes years, perfecting that product without ever showing the product, even in a very rudimentary form, to the prospective customer. When they fail to reach broad uptake from customers, it is often because they never spoke to prospective customers and determined whether or not the product was interesting. When customers ultimately communicate, through their indifference, that they don''t care about the idea, the startup fails.<\\/p>\\r\\n<h2 class=\\"lato\\" style=\\"margin: 0px; font-family: Lato, Helvetica, Arial, serif; font-weight: 900; line-height: normal; color: #000000; text-rendering: optimizelegibility; font-size: 32px; text-transform: uppercase;\\">\\u00a0<\\/h2>\\r\\n<h2 class=\\"lato\\" style=\\"margin: 0px; font-family: Lato, Helvetica, Arial, serif; font-weight: 900; line-height: normal; color: #000000; text-rendering: optimizelegibility; font-size: 32px; text-transform: uppercase;\\">\\u00a0<\\/h2>\\r\\n<h2 class=\\"lato\\" style=\\"margin: 0px; font-family: Lato, Helvetica, Arial, serif; font-weight: 900; line-height: normal; color: #000000; text-rendering: optimizelegibility; font-size: 32px; text-transform: uppercase;\\">ELIMINATE UNCERTAINTY<\\/h2>\\r\\n<p class=\\"marginBottom\\" style=\\"margin: 0px 0px 70px; color: #231f20; font-size: 15px; line-height: 24px; font-family: Tahoma, Geneva, Verdana, sans-serif;\\">The lack of a tailored management process has led many a start-up or, as Ries terms them, \\"a human institution designed to create a new product or service under conditions of extreme uncertainty\\", to abandon all process. They take a \\"just do it\\" approach that avoids all forms of management. But this is not the only option. Using the Lean Startup approach, companies can create order not chaos by providing tools to test a vision continuously. Lean isn''t simply about spending less money. Lean isn''t just about failing fast, failing cheap. It is about putting a process, a methodology around the development of a product.<\\/p>","fulltext":"","state":1,"catid":"2","created":"2014-01-30 13:31:38","created_by":"880","created_by_alias":"","modified":"2014-02-07 21:08:08","modified_by":"880","checked_out":"880","checked_out_time":"2014-02-07 21:04:43","publish_up":"2014-01-30 13:31:38","publish_down":"0000-00-00 00:00:00","images":"{\\"image_intro\\":\\"\\",\\"float_intro\\":\\"\\",\\"image_intro_alt\\":\\"\\",\\"image_intro_caption\\":\\"\\",\\"image_fulltext\\":\\"\\",\\"float_fulltext\\":\\"\\",\\"image_fulltext_alt\\":\\"\\",\\"image_fulltext_caption\\":\\"\\"}","urls":"{\\"urla\\":false,\\"urlatext\\":\\"\\",\\"targeta\\":\\"\\",\\"urlb\\":false,\\"urlbtext\\":\\"\\",\\"targetb\\":\\"\\",\\"urlc\\":false,\\"urlctext\\":\\"\\",\\"targetc\\":\\"\\"}","attribs":"{\\"show_title\\":\\"\\",\\"link_titles\\":\\"\\",\\"show_tags\\":\\"\\",\\"show_intro\\":\\"\\",\\"info_block_position\\":\\"\\",\\"show_category\\":\\"\\",\\"link_category\\":\\"\\",\\"show_parent_category\\":\\"\\",\\"link_parent_category\\":\\"\\",\\"show_author\\":\\"\\",\\"link_author\\":\\"\\",\\"show_create_date\\":\\"\\",\\"show_modify_date\\":\\"\\",\\"show_publish_date\\":\\"\\",\\"show_item_navigation\\":\\"\\",\\"show_icons\\":\\"\\",\\"show_print_icon\\":\\"\\",\\"show_email_icon\\":\\"\\",\\"show_vote\\":\\"\\",\\"show_hits\\":\\"\\",\\"show_noauth\\":\\"\\",\\"urls_position\\":\\"\\",\\"alternative_readmore\\":\\"\\",\\"article_layout\\":\\"\\",\\"show_publishing_options\\":\\"\\",\\"show_article_options\\":\\"\\",\\"show_urls_images_backend\\":\\"\\",\\"show_urls_images_frontend\\":\\"\\"}","version":4,"ordering":"3","metakey":"","metadesc":"","access":"1","hits":"7","metadata":"{\\"robots\\":\\"\\",\\"author\\":\\"\\",\\"rights\\":\\"\\",\\"xreference\\":\\"\\"}","featured":"0","language":"en-GB","xreference":""}', 0),
 (45, 23, 1, '', '2014-02-07 21:08:30', 880, 3761, '5fab60f26b46a7046de71a1abf8080b73257a14c', '{"id":23,"asset_id":"92","title":"Lean & Pretotype","alias":"lean-pretotype","introtext":"<p style=\\"margin: 0px 0px 30px; color: #231f20; font-size: 15px; line-height: 24px; font-family: Tahoma, Geneva, Verdana, sans-serif; text-align: left;\\"><img src=\\"images\\/methodology_diagram.jpg\\" alt=\\"\\" align=\\"left\\" hspace=\\"15\\" \\/>Too many startups begin with an idea for a product that they think people want. They then spend months, sometimes years, perfecting that product without ever showing the product, even in a very rudimentary form, to the prospective customer. When they fail to reach broad uptake from customers, it is often because they never spoke to prospective customers and determined whether or not the product was interesting. When customers ultimately communicate, through their indifference, that they don''t care about the idea, the startup fails.<\\/p>\\r\\n<h2 class=\\"lato\\" style=\\"margin: 0px; font-family: Lato, Helvetica, Arial, serif; font-weight: 900; line-height: normal; color: #000000; text-rendering: optimizelegibility; font-size: 32px; text-transform: uppercase;\\">\\u00a0<\\/h2>\\r\\n<h2 class=\\"lato\\" style=\\"margin: 0px; font-family: Lato, Helvetica, Arial, serif; font-weight: 900; line-height: normal; color: #000000; text-rendering: optimizelegibility; font-size: 32px; text-transform: uppercase;\\">ELIMINATE UNCERTAINTY<\\/h2>\\r\\n<p class=\\"marginBottom\\" style=\\"margin: 0px 0px 70px; color: #231f20; font-size: 15px; line-height: 24px; font-family: Tahoma, Geneva, Verdana, sans-serif;\\">The lack of a tailored management process has led many a start-up or, as Ries terms them, \\"a human institution designed to create a new product or service under conditions of extreme uncertainty\\", to abandon all process. They take a \\"just do it\\" approach that avoids all forms of management. But this is not the only option. Using the Lean Startup approach, companies can create order not chaos by providing tools to test a vision continuously. Lean isn''t simply about spending less money. Lean isn''t just about failing fast, failing cheap. It is about putting a process, a methodology around the development of a product.<\\/p>","fulltext":"","state":1,"catid":"2","created":"2014-01-30 13:31:38","created_by":"880","created_by_alias":"","modified":"2014-02-07 21:08:30","modified_by":"880","checked_out":"880","checked_out_time":"2014-02-07 21:08:08","publish_up":"2014-01-30 13:31:38","publish_down":"0000-00-00 00:00:00","images":"{\\"image_intro\\":\\"\\",\\"float_intro\\":\\"\\",\\"image_intro_alt\\":\\"\\",\\"image_intro_caption\\":\\"\\",\\"image_fulltext\\":\\"\\",\\"float_fulltext\\":\\"\\",\\"image_fulltext_alt\\":\\"\\",\\"image_fulltext_caption\\":\\"\\"}","urls":"{\\"urla\\":false,\\"urlatext\\":\\"\\",\\"targeta\\":\\"\\",\\"urlb\\":false,\\"urlbtext\\":\\"\\",\\"targetb\\":\\"\\",\\"urlc\\":false,\\"urlctext\\":\\"\\",\\"targetc\\":\\"\\"}","attribs":"{\\"show_title\\":\\"\\",\\"link_titles\\":\\"\\",\\"show_tags\\":\\"\\",\\"show_intro\\":\\"\\",\\"info_block_position\\":\\"\\",\\"show_category\\":\\"\\",\\"link_category\\":\\"\\",\\"show_parent_category\\":\\"\\",\\"link_parent_category\\":\\"\\",\\"show_author\\":\\"\\",\\"link_author\\":\\"\\",\\"show_create_date\\":\\"\\",\\"show_modify_date\\":\\"\\",\\"show_publish_date\\":\\"\\",\\"show_item_navigation\\":\\"\\",\\"show_icons\\":\\"\\",\\"show_print_icon\\":\\"\\",\\"show_email_icon\\":\\"\\",\\"show_vote\\":\\"\\",\\"show_hits\\":\\"\\",\\"show_noauth\\":\\"\\",\\"urls_position\\":\\"\\",\\"alternative_readmore\\":\\"\\",\\"article_layout\\":\\"\\",\\"show_publishing_options\\":\\"\\",\\"show_article_options\\":\\"\\",\\"show_urls_images_backend\\":\\"\\",\\"show_urls_images_frontend\\":\\"\\"}","version":5,"ordering":"3","metakey":"","metadesc":"","access":"1","hits":"8","metadata":"{\\"robots\\":\\"\\",\\"author\\":\\"\\",\\"rights\\":\\"\\",\\"xreference\\":\\"\\"}","featured":"0","language":"en-GB","xreference":""}', 0),
-(46, 23, 1, '', '2014-02-07 21:11:10', 880, 3200, '7b7772bf55cd35a0034bc33e588c6cdc2885d977', '{"id":23,"asset_id":"92","title":"Lean & Pretotype","alias":"lean-pretotype","introtext":"<h1 style=\\"margin: 0px 0px 30px; color: #231f20; font-size: 15px; line-height: 24px; font-family: Tahoma, Geneva, Verdana, sans-serif; text-align: left;\\">Lean &amp; Pretotype<\\/h1>\\r\\n<p><img src=\\"images\\/methodology_diagram.jpg\\" alt=\\"\\" align=\\"left\\" hspace=\\"15\\" \\/>Too many startups begin with an idea for a product that they think people want. They then spend months, sometimes years, perfecting that product without ever showing the product, even in a very rudimentary form, to the prospective customer. When they fail to reach broad uptake from customers, it is often because they never spoke to prospective customers and determined whether or not the product was interesting. When customers ultimately communicate, through their indifference, that they don''t care about the idea, the startup fails.<\\/p>\\r\\n<p>\\u00a0<\\/p>\\r\\n<p>ELIMINATE UNCERTAINTY<\\/p>\\r\\n<p>The lack of a tailored management process has led many a start-up or, as Ries terms them, \\"a human institution designed to create a new product or service under conditions of extreme uncertainty\\", to abandon all process. They take a \\"just do it\\" approach that avoids all forms of management. But this is not the only option. Using the Lean Startup approach, companies can create order not chaos by providing tools to test a vision continuously. Lean isn''t simply about spending less money. Lean isn''t just about failing fast, failing cheap. It is about putting a process, a methodology around the development of a product.<\\/p>","fulltext":"","state":1,"catid":"2","created":"2014-01-30 13:31:38","created_by":"880","created_by_alias":"","modified":"2014-02-07 21:11:10","modified_by":"880","checked_out":"880","checked_out_time":"2014-02-07 21:08:30","publish_up":"2014-01-30 13:31:38","publish_down":"0000-00-00 00:00:00","images":"{\\"image_intro\\":\\"\\",\\"float_intro\\":\\"\\",\\"image_intro_alt\\":\\"\\",\\"image_intro_caption\\":\\"\\",\\"image_fulltext\\":\\"\\",\\"float_fulltext\\":\\"\\",\\"image_fulltext_alt\\":\\"\\",\\"image_fulltext_caption\\":\\"\\"}","urls":"{\\"urla\\":false,\\"urlatext\\":\\"\\",\\"targeta\\":\\"\\",\\"urlb\\":false,\\"urlbtext\\":\\"\\",\\"targetb\\":\\"\\",\\"urlc\\":false,\\"urlctext\\":\\"\\",\\"targetc\\":\\"\\"}","attribs":"{\\"show_title\\":\\"\\",\\"link_titles\\":\\"\\",\\"show_tags\\":\\"\\",\\"show_intro\\":\\"\\",\\"info_block_position\\":\\"\\",\\"show_category\\":\\"\\",\\"link_category\\":\\"\\",\\"show_parent_category\\":\\"\\",\\"link_parent_category\\":\\"\\",\\"show_author\\":\\"\\",\\"link_author\\":\\"\\",\\"show_create_date\\":\\"\\",\\"show_modify_date\\":\\"\\",\\"show_publish_date\\":\\"\\",\\"show_item_navigation\\":\\"\\",\\"show_icons\\":\\"\\",\\"show_print_icon\\":\\"\\",\\"show_email_icon\\":\\"\\",\\"show_vote\\":\\"\\",\\"show_hits\\":\\"\\",\\"show_noauth\\":\\"\\",\\"urls_position\\":\\"\\",\\"alternative_readmore\\":\\"\\",\\"article_layout\\":\\"\\",\\"show_publishing_options\\":\\"\\",\\"show_article_options\\":\\"\\",\\"show_urls_images_backend\\":\\"\\",\\"show_urls_images_frontend\\":\\"\\"}","version":6,"ordering":"3","metakey":"","metadesc":"","access":"1","hits":"9","metadata":"{\\"robots\\":\\"\\",\\"author\\":\\"\\",\\"rights\\":\\"\\",\\"xreference\\":\\"\\"}","featured":"0","language":"en-GB","xreference":""}', 0);
+(46, 23, 1, '', '2014-02-07 21:11:10', 880, 3200, '7b7772bf55cd35a0034bc33e588c6cdc2885d977', '{"id":23,"asset_id":"92","title":"Lean & Pretotype","alias":"lean-pretotype","introtext":"<h1 style=\\"margin: 0px 0px 30px; color: #231f20; font-size: 15px; line-height: 24px; font-family: Tahoma, Geneva, Verdana, sans-serif; text-align: left;\\">Lean &amp; Pretotype<\\/h1>\\r\\n<p><img src=\\"images\\/methodology_diagram.jpg\\" alt=\\"\\" align=\\"left\\" hspace=\\"15\\" \\/>Too many startups begin with an idea for a product that they think people want. They then spend months, sometimes years, perfecting that product without ever showing the product, even in a very rudimentary form, to the prospective customer. When they fail to reach broad uptake from customers, it is often because they never spoke to prospective customers and determined whether or not the product was interesting. When customers ultimately communicate, through their indifference, that they don''t care about the idea, the startup fails.<\\/p>\\r\\n<p>\\u00a0<\\/p>\\r\\n<p>ELIMINATE UNCERTAINTY<\\/p>\\r\\n<p>The lack of a tailored management process has led many a start-up or, as Ries terms them, \\"a human institution designed to create a new product or service under conditions of extreme uncertainty\\", to abandon all process. They take a \\"just do it\\" approach that avoids all forms of management. But this is not the only option. Using the Lean Startup approach, companies can create order not chaos by providing tools to test a vision continuously. Lean isn''t simply about spending less money. Lean isn''t just about failing fast, failing cheap. It is about putting a process, a methodology around the development of a product.<\\/p>","fulltext":"","state":1,"catid":"2","created":"2014-01-30 13:31:38","created_by":"880","created_by_alias":"","modified":"2014-02-07 21:11:10","modified_by":"880","checked_out":"880","checked_out_time":"2014-02-07 21:08:30","publish_up":"2014-01-30 13:31:38","publish_down":"0000-00-00 00:00:00","images":"{\\"image_intro\\":\\"\\",\\"float_intro\\":\\"\\",\\"image_intro_alt\\":\\"\\",\\"image_intro_caption\\":\\"\\",\\"image_fulltext\\":\\"\\",\\"float_fulltext\\":\\"\\",\\"image_fulltext_alt\\":\\"\\",\\"image_fulltext_caption\\":\\"\\"}","urls":"{\\"urla\\":false,\\"urlatext\\":\\"\\",\\"targeta\\":\\"\\",\\"urlb\\":false,\\"urlbtext\\":\\"\\",\\"targetb\\":\\"\\",\\"urlc\\":false,\\"urlctext\\":\\"\\",\\"targetc\\":\\"\\"}","attribs":"{\\"show_title\\":\\"\\",\\"link_titles\\":\\"\\",\\"show_tags\\":\\"\\",\\"show_intro\\":\\"\\",\\"info_block_position\\":\\"\\",\\"show_category\\":\\"\\",\\"link_category\\":\\"\\",\\"show_parent_category\\":\\"\\",\\"link_parent_category\\":\\"\\",\\"show_author\\":\\"\\",\\"link_author\\":\\"\\",\\"show_create_date\\":\\"\\",\\"show_modify_date\\":\\"\\",\\"show_publish_date\\":\\"\\",\\"show_item_navigation\\":\\"\\",\\"show_icons\\":\\"\\",\\"show_print_icon\\":\\"\\",\\"show_email_icon\\":\\"\\",\\"show_vote\\":\\"\\",\\"show_hits\\":\\"\\",\\"show_noauth\\":\\"\\",\\"urls_position\\":\\"\\",\\"alternative_readmore\\":\\"\\",\\"article_layout\\":\\"\\",\\"show_publishing_options\\":\\"\\",\\"show_article_options\\":\\"\\",\\"show_urls_images_backend\\":\\"\\",\\"show_urls_images_frontend\\":\\"\\"}","version":6,"ordering":"3","metakey":"","metadesc":"","access":"1","hits":"9","metadata":"{\\"robots\\":\\"\\",\\"author\\":\\"\\",\\"rights\\":\\"\\",\\"xreference\\":\\"\\"}","featured":"0","language":"en-GB","xreference":""}', 0),
+(47, 1, 1, '', '2014-02-12 03:16:44', 880, 3312, '554760aec0fd93cabf2689c3eb611d9b3fb25f4e', '{"id":1,"asset_id":"58","title":"Inicio","alias":"inicio","introtext":"<p style=\\"text-align: justify;\\"><img src=\\"images\\/cybersyn.jpg\\" alt=\\"\\" align=\\"left\\" hspace=\\"15\\" \\/>En 1971, durante el gobierno del presidente Salvador Allende, se comienza a desarrollar en Chile un innovador sistema cibern\\u00e9tico de gesti\\u00f3n y transferencia de informaci\\u00f3n. El proyecto se llam\\u00f3 CYBERSYN, sinergia cibern\\u00e9tica, o SYNCO, sistema de informaci\\u00f3n y control.<\\/p>\\r\\n<p style=\\"text-align: justify;\\">En las empresas del \\u00e1rea de la propiedad social del Estado de Chile se implementar\\u00eda un sistema de transferencia de informaci\\u00f3n econ\\u00f3mica a \\"casi\\" tiempo real con el gobierno.<\\/p>\\r\\n<p style=\\"text-align: justify;\\">Despu\\u00e9s de nacionalizar y anexar diversas empresas de propiedad social al Estado, el sistema econ\\u00f3mico del Gobierno de Allende se enfrent\\u00f3 a la necesidad de coordinar la informaci\\u00f3n de las empresas existentes estatales y las recientemente nacionalizadas. Para lograrlo, se necesit\\u00f3 crear un sistema de transferencia de informaci\\u00f3n din\\u00e1mico y flexible.<\\/p>\\r\\n<p style=\\"text-align: justify;\\">En 1970, Fernando Flores fue nombrado Director General T\\u00e9cnico de CORFO (Corporaci\\u00f3n para el Fomento de la Producci\\u00f3n de Chile). Comenz\\u00f3 a ser el responsable de la gesti\\u00f3n y coordinaci\\u00f3n entre las empresas nacionalizadas y el Estado. Conoc\\u00eda las teor\\u00edas y las soluciones propuestas por el brit\\u00e1nico Stafford Beer desde que era estudiante de ingenier\\u00eda y posteriormente por su relaci\\u00f3n profesional con la empresa de consultor\\u00eda de Stafford Beer SIGMA.<\\/p>","fulltext":"","state":1,"catid":"2","created":"2014-01-22 21:13:32","created_by":"880","created_by_alias":"","modified":"2014-02-12 03:16:44","modified_by":"880","checked_out":"880","checked_out_time":"2014-02-12 03:16:20","publish_up":"2014-01-22 21:13:32","publish_down":"0000-00-00 00:00:00","images":"{\\"image_intro\\":\\"\\",\\"float_intro\\":\\"\\",\\"image_intro_alt\\":\\"\\",\\"image_intro_caption\\":\\"\\",\\"image_fulltext\\":\\"\\",\\"float_fulltext\\":\\"\\",\\"image_fulltext_alt\\":\\"\\",\\"image_fulltext_caption\\":\\"\\"}","urls":"{\\"urla\\":false,\\"urlatext\\":\\"\\",\\"targeta\\":\\"\\",\\"urlb\\":false,\\"urlbtext\\":\\"\\",\\"targetb\\":\\"\\",\\"urlc\\":false,\\"urlctext\\":\\"\\",\\"targetc\\":\\"\\"}","attribs":"{\\"show_title\\":\\"\\",\\"link_titles\\":\\"\\",\\"show_tags\\":\\"\\",\\"show_intro\\":\\"\\",\\"info_block_position\\":\\"\\",\\"show_category\\":\\"\\",\\"link_category\\":\\"\\",\\"show_parent_category\\":\\"\\",\\"link_parent_category\\":\\"\\",\\"show_author\\":\\"\\",\\"link_author\\":\\"\\",\\"show_create_date\\":\\"\\",\\"show_modify_date\\":\\"\\",\\"show_publish_date\\":\\"\\",\\"show_item_navigation\\":\\"\\",\\"show_icons\\":\\"\\",\\"show_print_icon\\":\\"\\",\\"show_email_icon\\":\\"\\",\\"show_vote\\":\\"\\",\\"show_hits\\":\\"\\",\\"show_noauth\\":\\"\\",\\"urls_position\\":\\"\\",\\"alternative_readmore\\":\\"\\",\\"article_layout\\":\\"\\",\\"show_publishing_options\\":\\"\\",\\"show_article_options\\":\\"\\",\\"show_urls_images_backend\\":\\"\\",\\"show_urls_images_frontend\\":\\"\\"}","version":3,"ordering":"21","metakey":"","metadesc":"","access":"1","hits":"218","metadata":"{\\"robots\\":\\"\\",\\"author\\":\\"\\",\\"rights\\":\\"\\",\\"xreference\\":\\"\\"}","featured":"0","language":"es-ES","xreference":""}', 0);
 
 -- --------------------------------------------------------
 
@@ -2034,7 +2043,7 @@ INSERT INTO `r0dnb_ucm_history` (`version_id`, `ucm_item_id`, `ucm_type_id`, `ve
 -- Estructura de tabla para la tabla `r0dnb_updates`
 --
 
-CREATE TABLE `r0dnb_updates` (
+CREATE TABLE IF NOT EXISTS `r0dnb_updates` (
   `update_id` int(11) NOT NULL AUTO_INCREMENT,
   `update_site_id` int(11) DEFAULT '0',
   `extension_id` int(11) DEFAULT '0',
@@ -2049,61 +2058,77 @@ CREATE TABLE `r0dnb_updates` (
   `detailsurl` text NOT NULL,
   `infourl` text NOT NULL,
   PRIMARY KEY (`update_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Available Updates' AUTO_INCREMENT=49 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Available Updates' AUTO_INCREMENT=65 ;
 
 --
 -- Volcado de datos para la tabla `r0dnb_updates`
 --
 
 INSERT INTO `r0dnb_updates` (`update_id`, `update_site_id`, `extension_id`, `name`, `description`, `element`, `type`, `folder`, `client_id`, `version`, `data`, `detailsurl`, `infourl`) VALUES
-(1, 3, 0, 'Malay', '', 'pkg_ms-MY', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/ms-MY_details.xml', ''),
-(2, 3, 0, 'Romanian', '', 'pkg_ro-RO', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/ro-RO_details.xml', ''),
-(3, 3, 0, 'Flemish', '', 'pkg_nl-BE', 'package', '', 0, '3.2.1.2', '', 'http://update.joomla.org/language/details3/nl-BE_details.xml', ''),
-(4, 3, 0, 'Chinese Traditional', '', 'pkg_zh-TW', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/zh-TW_details.xml', ''),
-(5, 3, 0, 'French', '', 'pkg_fr-FR', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/fr-FR_details.xml', ''),
-(6, 3, 0, 'German', '', 'pkg_de-DE', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/de-DE_details.xml', ''),
+(1, 3, 0, 'Malay', '', 'pkg_ms-MY', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/ms-MY_details.xml', ''),
+(2, 3, 0, 'Romanian', '', 'pkg_ro-RO', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/ro-RO_details.xml', ''),
+(3, 3, 0, 'Flemish', '', 'pkg_nl-BE', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/nl-BE_details.xml', ''),
+(4, 3, 0, 'Chinese Traditional', '', 'pkg_zh-TW', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/zh-TW_details.xml', ''),
+(5, 3, 0, 'French', '', 'pkg_fr-FR', 'package', '', 0, '3.2.2.2', '', 'http://update.joomla.org/language/details3/fr-FR_details.xml', ''),
+(6, 3, 0, 'German', '', 'pkg_de-DE', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/de-DE_details.xml', ''),
 (7, 3, 0, 'Greek', '', 'pkg_el-GR', 'package', '', 0, '3.2.0.1', '', 'http://update.joomla.org/language/details3/el-GR_details.xml', ''),
-(8, 3, 0, 'Japanese', '', 'pkg_ja-JP', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/ja-JP_details.xml', ''),
+(8, 3, 0, 'Japanese', '', 'pkg_ja-JP', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/ja-JP_details.xml', ''),
 (9, 3, 0, 'Hebrew', '', 'pkg_he-IL', 'package', '', 0, '3.1.1.1', '', 'http://update.joomla.org/language/details3/he-IL_details.xml', ''),
-(10, 3, 0, 'Hungarian', '', 'pkg_hu-HU', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/hu-HU_details.xml', ''),
+(10, 3, 0, 'Hungarian', '', 'pkg_hu-HU', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/hu-HU_details.xml', ''),
 (11, 3, 0, 'Afrikaans', '', 'pkg_af-ZA', 'package', '', 0, '3.2.0.1', '', 'http://update.joomla.org/language/details3/af-ZA_details.xml', ''),
-(12, 3, 0, 'Arabic Unitag', '', 'pkg_ar-AA', 'package', '', 0, '3.2.1.2', '', 'http://update.joomla.org/language/details3/ar-AA_details.xml', ''),
+(12, 3, 0, 'Arabic Unitag', '', 'pkg_ar-AA', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/ar-AA_details.xml', ''),
 (13, 3, 0, 'Belarusian', '', 'pkg_be-BY', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/be-BY_details.xml', ''),
-(14, 3, 0, 'Bulgarian', '', 'pkg_bg-BG', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/bg-BG_details.xml', ''),
-(15, 3, 0, 'Catalan', '', 'pkg_ca-ES', 'package', '', 0, '3.2.0.1', '', 'http://update.joomla.org/language/details3/ca-ES_details.xml', ''),
-(16, 3, 0, 'Chinese Simplified', '', 'pkg_zh-CN', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/zh-CN_details.xml', ''),
-(17, 3, 0, 'Croatian', '', 'pkg_hr-HR', 'package', '', 0, '3.1.5.1', '', 'http://update.joomla.org/language/details3/hr-HR_details.xml', ''),
-(18, 3, 0, 'Czech', '', 'pkg_cs-CZ', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/cs-CZ_details.xml', ''),
-(19, 3, 0, 'Danish', '', 'pkg_da-DK', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/da-DK_details.xml', ''),
-(20, 3, 0, 'Dutch', '', 'pkg_nl-NL', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/nl-NL_details.xml', ''),
-(21, 3, 0, 'English AU', '', 'pkg_en-AU', 'package', '', 0, '3.1.0.1', '', 'http://update.joomla.org/language/details3/en-AU_details.xml', ''),
-(22, 3, 0, 'English US', '', 'pkg_en-US', 'package', '', 0, '3.1.0.1', '', 'http://update.joomla.org/language/details3/en-US_details.xml', ''),
-(23, 3, 0, 'Estonian', '', 'pkg_et-EE', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/et-EE_details.xml', ''),
-(24, 3, 0, 'Italian', '', 'pkg_it-IT', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/it-IT_details.xml', ''),
-(25, 3, 0, 'Korean', '', 'pkg_ko-KR', 'package', '', 0, '3.2.1.0', '', 'http://update.joomla.org/language/details3/ko-KR_details.xml', ''),
-(26, 3, 0, 'Latvian', '', 'pkg_lv-LV', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/lv-LV_details.xml', ''),
-(27, 3, 0, 'Macedonian', '', 'pkg_mk-MK', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/mk-MK_details.xml', ''),
-(28, 3, 0, 'Norwegian Bokmal', '', 'pkg_nb-NO', 'package', '', 0, '3.2.0.1', '', 'http://update.joomla.org/language/details3/nb-NO_details.xml', ''),
-(29, 3, 0, 'Persian', '', 'pkg_fa-IR', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/fa-IR_details.xml', ''),
-(30, 3, 0, 'Polish', '', 'pkg_pl-PL', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/pl-PL_details.xml', ''),
-(31, 3, 0, 'Russian', '', 'pkg_ru-RU', 'package', '', 0, '3.2.1.5', '', 'http://update.joomla.org/language/details3/ru-RU_details.xml', ''),
-(32, 3, 0, 'Slovak', '', 'pkg_sk-SK', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/sk-SK_details.xml', ''),
-(33, 3, 0, 'Swedish', '', 'pkg_sv-SE', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/sv-SE_details.xml', ''),
-(34, 3, 0, 'Syriac', '', 'pkg_sy-IQ', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/sy-IQ_details.xml', ''),
-(35, 3, 0, 'Tamil', '', 'pkg_ta-IN', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/ta-IN_details.xml', ''),
-(36, 3, 0, 'Thai', '', 'pkg_th-TH', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/th-TH_details.xml', ''),
-(37, 3, 0, 'Turkish', '', 'pkg_tr-TR', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/tr-TR_details.xml', ''),
-(38, 3, 0, 'Ukrainian', '', 'pkg_uk-UA', 'package', '', 0, '3.2.0.6', '', 'http://update.joomla.org/language/details3/uk-UA_details.xml', ''),
-(39, 3, 0, 'Uyghur', '', 'pkg_ug-CN', 'package', '', 0, '3.2.0.1', '', 'http://update.joomla.org/language/details3/ug-CN_details.xml', ''),
-(40, 3, 0, 'Albanian', '', 'pkg_sq-AL', 'package', '', 0, '3.1.1.1', '', 'http://update.joomla.org/language/details3/sq-AL_details.xml', ''),
-(41, 3, 0, 'Serbian Latin', '', 'pkg_sr-YU', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/sr-YU_details.xml', ''),
-(42, 3, 0, 'Bosnian', '', 'pkg_bs-BA', 'package', '', 0, '3.2.0.1', '', 'http://update.joomla.org/language/details3/bs-BA_details.xml', ''),
-(43, 3, 0, 'Serbian Cyrillic', '', 'pkg_sr-RS', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/sr-RS_details.xml', ''),
-(44, 3, 0, 'Vietnamese', '', 'pkg_vi-VN', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/vi-VN_details.xml', ''),
-(45, 3, 0, 'Bahasa Indonesia', '', 'pkg_id-ID', 'package', '', 0, '3.1.4.1', '', 'http://update.joomla.org/language/details3/id-ID_details.xml', ''),
-(46, 3, 0, 'Finnish', '', 'pkg_fi-FI', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/fi-FI_details.xml', ''),
-(47, 3, 0, 'Swahili', '', 'pkg_sw-KE', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/sw-KE_details.xml', ''),
-(48, 3, 0, 'Montenegrin', '', 'pkg_srp-ME', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/srp-ME_details.xml', '');
+(14, 1, 700, 'Joomla', '', 'joomla', 'file', '', 0, '3.2.2', '', 'http://update.joomla.org/core/sts/extension_sts.xml', ''),
+(15, 3, 0, 'Bulgarian', '', 'pkg_bg-BG', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/bg-BG_details.xml', ''),
+(16, 3, 0, 'Catalan', '', 'pkg_ca-ES', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/ca-ES_details.xml', ''),
+(17, 3, 0, 'Chinese Simplified', '', 'pkg_zh-CN', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/zh-CN_details.xml', ''),
+(18, 3, 0, 'Croatian', '', 'pkg_hr-HR', 'package', '', 0, '3.1.5.1', '', 'http://update.joomla.org/language/details3/hr-HR_details.xml', ''),
+(19, 3, 0, 'Czech', '', 'pkg_cs-CZ', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/cs-CZ_details.xml', ''),
+(20, 3, 0, 'Danish', '', 'pkg_da-DK', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/da-DK_details.xml', ''),
+(21, 3, 0, 'Dutch', '', 'pkg_nl-NL', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/nl-NL_details.xml', ''),
+(22, 3, 0, 'English AU', '', 'pkg_en-AU', 'package', '', 0, '3.1.0.1', '', 'http://update.joomla.org/language/details3/en-AU_details.xml', ''),
+(23, 3, 0, 'English US', '', 'pkg_en-US', 'package', '', 0, '3.1.0.1', '', 'http://update.joomla.org/language/details3/en-US_details.xml', ''),
+(24, 3, 0, 'Estonian', '', 'pkg_et-EE', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/et-EE_details.xml', ''),
+(25, 3, 0, 'Italian', '', 'pkg_it-IT', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/it-IT_details.xml', ''),
+(26, 3, 0, 'Korean', '', 'pkg_ko-KR', 'package', '', 0, '3.2.1.0', '', 'http://update.joomla.org/language/details3/ko-KR_details.xml', ''),
+(27, 3, 0, 'Latvian', '', 'pkg_lv-LV', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/lv-LV_details.xml', ''),
+(28, 3, 0, 'Macedonian', '', 'pkg_mk-MK', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/mk-MK_details.xml', ''),
+(29, 3, 0, 'Norwegian Bokmal', '', 'pkg_nb-NO', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/nb-NO_details.xml', ''),
+(30, 3, 0, 'Persian', '', 'pkg_fa-IR', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/fa-IR_details.xml', ''),
+(31, 3, 0, 'Polish', '', 'pkg_pl-PL', 'package', '', 0, '3.2.2.2', '', 'http://update.joomla.org/language/details3/pl-PL_details.xml', ''),
+(32, 3, 0, 'Russian', '', 'pkg_ru-RU', 'package', '', 0, '3.2.1.5', '', 'http://update.joomla.org/language/details3/ru-RU_details.xml', ''),
+(33, 3, 0, 'Slovak', '', 'pkg_sk-SK', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/sk-SK_details.xml', ''),
+(34, 3, 0, 'Swedish', '', 'pkg_sv-SE', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/sv-SE_details.xml', ''),
+(35, 3, 0, 'Syriac', '', 'pkg_sy-IQ', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/sy-IQ_details.xml', ''),
+(36, 3, 0, 'Tamil', '', 'pkg_ta-IN', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/ta-IN_details.xml', ''),
+(37, 3, 0, 'Thai', '', 'pkg_th-TH', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/th-TH_details.xml', ''),
+(38, 3, 0, 'Thai', '', 'pkg_th-TH', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/th-TH_details.xml', ''),
+(39, 3, 0, 'Turkish', '', 'pkg_tr-TR', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/tr-TR_details.xml', ''),
+(40, 3, 0, 'Turkish', '', 'pkg_tr-TR', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/tr-TR_details.xml', ''),
+(41, 3, 0, 'Ukrainian', '', 'pkg_uk-UA', 'package', '', 0, '3.2.0.6', '', 'http://update.joomla.org/language/details3/uk-UA_details.xml', ''),
+(42, 3, 0, 'Ukrainian', '', 'pkg_uk-UA', 'package', '', 0, '3.2.0.6', '', 'http://update.joomla.org/language/details3/uk-UA_details.xml', ''),
+(43, 3, 0, 'Uyghur', '', 'pkg_ug-CN', 'package', '', 0, '3.2.0.1', '', 'http://update.joomla.org/language/details3/ug-CN_details.xml', ''),
+(44, 3, 0, 'Uyghur', '', 'pkg_ug-CN', 'package', '', 0, '3.2.0.1', '', 'http://update.joomla.org/language/details3/ug-CN_details.xml', ''),
+(45, 3, 0, 'Albanian', '', 'pkg_sq-AL', 'package', '', 0, '3.1.1.1', '', 'http://update.joomla.org/language/details3/sq-AL_details.xml', ''),
+(46, 3, 0, 'Albanian', '', 'pkg_sq-AL', 'package', '', 0, '3.1.1.1', '', 'http://update.joomla.org/language/details3/sq-AL_details.xml', ''),
+(47, 3, 0, 'Serbian Latin', '', 'pkg_sr-YU', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/sr-YU_details.xml', ''),
+(48, 3, 0, 'Serbian Latin', '', 'pkg_sr-YU', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/sr-YU_details.xml', ''),
+(49, 3, 10002, 'Spanish', '', 'pkg_es-ES', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/es-ES_details.xml', ''),
+(50, 3, 10002, 'Spanish', '', 'pkg_es-ES', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/es-ES_details.xml', ''),
+(51, 3, 0, 'Bosnian', '', 'pkg_bs-BA', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/bs-BA_details.xml', ''),
+(52, 3, 0, 'Bosnian', '', 'pkg_bs-BA', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/bs-BA_details.xml', ''),
+(53, 3, 0, 'Serbian Cyrillic', '', 'pkg_sr-RS', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/sr-RS_details.xml', ''),
+(54, 3, 0, 'Serbian Cyrillic', '', 'pkg_sr-RS', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/sr-RS_details.xml', ''),
+(55, 3, 0, 'Vietnamese', '', 'pkg_vi-VN', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/vi-VN_details.xml', ''),
+(56, 3, 0, 'Vietnamese', '', 'pkg_vi-VN', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/vi-VN_details.xml', ''),
+(57, 3, 0, 'Bahasa Indonesia', '', 'pkg_id-ID', 'package', '', 0, '3.1.4.1', '', 'http://update.joomla.org/language/details3/id-ID_details.xml', ''),
+(58, 3, 0, 'Bahasa Indonesia', '', 'pkg_id-ID', 'package', '', 0, '3.1.4.1', '', 'http://update.joomla.org/language/details3/id-ID_details.xml', ''),
+(59, 3, 0, 'Finnish', '', 'pkg_fi-FI', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/fi-FI_details.xml', ''),
+(60, 3, 0, 'Finnish', '', 'pkg_fi-FI', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/fi-FI_details.xml', ''),
+(61, 3, 0, 'Swahili', '', 'pkg_sw-KE', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/sw-KE_details.xml', ''),
+(62, 3, 0, 'Swahili', '', 'pkg_sw-KE', 'package', '', 0, '3.2.2.1', '', 'http://update.joomla.org/language/details3/sw-KE_details.xml', ''),
+(63, 3, 0, 'Montenegrin', '', 'pkg_srp-ME', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/srp-ME_details.xml', ''),
+(64, 3, 0, 'Montenegrin', '', 'pkg_srp-ME', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/srp-ME_details.xml', '');
 
 -- --------------------------------------------------------
 
@@ -2111,7 +2136,7 @@ INSERT INTO `r0dnb_updates` (`update_id`, `update_site_id`, `extension_id`, `nam
 -- Estructura de tabla para la tabla `r0dnb_update_sites`
 --
 
-CREATE TABLE `r0dnb_update_sites` (
+CREATE TABLE IF NOT EXISTS `r0dnb_update_sites` (
   `update_site_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT '',
   `type` varchar(20) DEFAULT '',
@@ -2126,9 +2151,9 @@ CREATE TABLE `r0dnb_update_sites` (
 --
 
 INSERT INTO `r0dnb_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`) VALUES
-(1, 'Joomla Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1390999857),
-(2, 'Joomla Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1390999857),
-(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 1390999857);
+(1, 'Joomla Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1392174909),
+(2, 'Joomla Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1392174909),
+(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 1392174909);
 
 -- --------------------------------------------------------
 
@@ -2136,7 +2161,7 @@ INSERT INTO `r0dnb_update_sites` (`update_site_id`, `name`, `type`, `location`, 
 -- Estructura de tabla para la tabla `r0dnb_update_sites_extensions`
 --
 
-CREATE TABLE `r0dnb_update_sites_extensions` (
+CREATE TABLE IF NOT EXISTS `r0dnb_update_sites_extensions` (
   `update_site_id` int(11) NOT NULL DEFAULT '0',
   `extension_id` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`update_site_id`,`extension_id`)
@@ -2158,7 +2183,7 @@ INSERT INTO `r0dnb_update_sites_extensions` (`update_site_id`, `extension_id`) V
 -- Estructura de tabla para la tabla `r0dnb_usergroups`
 --
 
-CREATE TABLE `r0dnb_usergroups` (
+CREATE TABLE IF NOT EXISTS `r0dnb_usergroups` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
@@ -2192,7 +2217,7 @@ INSERT INTO `r0dnb_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
 -- Estructura de tabla para la tabla `r0dnb_users`
 --
 
-CREATE TABLE `r0dnb_users` (
+CREATE TABLE IF NOT EXISTS `r0dnb_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `username` varchar(150) NOT NULL DEFAULT '',
@@ -2220,7 +2245,7 @@ CREATE TABLE `r0dnb_users` (
 --
 
 INSERT INTO `r0dnb_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`) VALUES
-(880, 'Super User', 'ritchie20', 'oscar.rubio.ma@gmail.com', '$P$DdXL.lZpQXajt4lE7SJuk4vikTeWpI0', 0, 1, '2014-01-22 19:58:08', '2014-02-07 20:57:49', '0', '', '0000-00-00 00:00:00', 0, '', '');
+(880, 'Super User', 'ritchie20', 'oscar.rubio.ma@gmail.com', '$P$DdXL.lZpQXajt4lE7SJuk4vikTeWpI0', 0, 1, '2014-01-22 19:58:08', '2014-02-12 03:15:00', '0', '', '0000-00-00 00:00:00', 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -2228,7 +2253,7 @@ INSERT INTO `r0dnb_users` (`id`, `name`, `username`, `email`, `password`, `block
 -- Estructura de tabla para la tabla `r0dnb_user_keys`
 --
 
-CREATE TABLE `r0dnb_user_keys` (
+CREATE TABLE IF NOT EXISTS `r0dnb_user_keys` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
@@ -2249,7 +2274,7 @@ CREATE TABLE `r0dnb_user_keys` (
 -- Estructura de tabla para la tabla `r0dnb_user_notes`
 --
 
-CREATE TABLE `r0dnb_user_notes` (
+CREATE TABLE IF NOT EXISTS `r0dnb_user_notes` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `catid` int(10) unsigned NOT NULL DEFAULT '0',
@@ -2276,7 +2301,7 @@ CREATE TABLE `r0dnb_user_notes` (
 -- Estructura de tabla para la tabla `r0dnb_user_profiles`
 --
 
-CREATE TABLE `r0dnb_user_profiles` (
+CREATE TABLE IF NOT EXISTS `r0dnb_user_profiles` (
   `user_id` int(11) NOT NULL,
   `profile_key` varchar(100) NOT NULL,
   `profile_value` varchar(255) NOT NULL,
@@ -2290,7 +2315,7 @@ CREATE TABLE `r0dnb_user_profiles` (
 -- Estructura de tabla para la tabla `r0dnb_user_usergroup_map`
 --
 
-CREATE TABLE `r0dnb_user_usergroup_map` (
+CREATE TABLE IF NOT EXISTS `r0dnb_user_usergroup_map` (
   `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__users.id',
   `group_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__usergroups.id',
   PRIMARY KEY (`user_id`,`group_id`)
@@ -2309,7 +2334,7 @@ INSERT INTO `r0dnb_user_usergroup_map` (`user_id`, `group_id`) VALUES
 -- Estructura de tabla para la tabla `r0dnb_viewlevels`
 --
 
-CREATE TABLE `r0dnb_viewlevels` (
+CREATE TABLE IF NOT EXISTS `r0dnb_viewlevels` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',
   `title` varchar(100) NOT NULL DEFAULT '',
   `ordering` int(11) NOT NULL DEFAULT '0',
@@ -2335,7 +2360,7 @@ INSERT INTO `r0dnb_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
 -- Estructura de tabla para la tabla `r0dnb_weblinks`
 --
 
-CREATE TABLE `r0dnb_weblinks` (
+CREATE TABLE IF NOT EXISTS `r0dnb_weblinks` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `catid` int(11) NOT NULL DEFAULT '0',
   `title` varchar(250) NOT NULL DEFAULT '',
@@ -2374,3 +2399,7 @@ CREATE TABLE `r0dnb_weblinks` (
   KEY `idx_language` (`language`),
   KEY `idx_xreference` (`xreference`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
